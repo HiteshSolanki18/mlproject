@@ -7,7 +7,8 @@ from dataclasses import dataclass
 
 from src.exception import CustomException
 from src.logger import logging
-from src.components.data_transformation import DataTransformation,DataTransformationConfig
+from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 
 @dataclass
 class DataIngestionConfig:
@@ -20,6 +21,9 @@ class DataIngestion:
         self.ingestion_config = DataIngestionConfig()
 
     def initiate_data_ingestion(self):
+        '''
+        This function Initiate the data Ingestion
+        '''
         logging.info("Entered the data Ingestion method or component")
 
         try:
@@ -52,4 +56,7 @@ if __name__ == "__main__":
     train_data,test_data = obj.initiate_data_ingestion()
 
     data_tranformation = DataTransformation()
-    data_tranformation.initiate_data_tranformation(train_data,test_data)
+    train_arr,test_arr,_ = data_tranformation.initiate_data_tranformation(train_data,test_data)
+    
+    model_obj = ModelTrainer()
+    print(model_obj.initiate_model_trainer(train_arr,test_arr))
