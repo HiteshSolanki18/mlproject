@@ -56,7 +56,6 @@ coverage.xml
 *.pot
 
 # Django stuff:
-artifacts/
 *.log
 local_settings.py
 db.sqlite3
@@ -128,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# custom folders
+artifacts/
